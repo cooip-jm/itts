@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "target": "ES2018",  // 升级到 ES2018，支持命名捕获组（可选）
+    "declaration": true,
+    "outDir": "dist",
+    "sourceMap": true
+  },
+  "typedocOptions": {
+    "entryPoints": ["app.ts"],
+    "out": "docs",
+    "excludePrivate": true
+  }
+}

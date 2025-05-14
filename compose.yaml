@@ -1,0 +1,39 @@
+
+services:
+  tts-service:
+    container_name: tts-service
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV=production
+      - WS_TIMEOUT=30000
+    ports:
+      - "36699:80"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"  # 每个日志文件最大 10MB
+        max-file: "3"    # 最多保留 3 个文件，总共 30MB
+    restart: always  # 服务崩溃后始终重启
+networks:
+  default:
+    name: itts_default
+
+#    volumes:
+#      - /root/www:/app/html  # 如果不需要 html/，可以移除此行
+#    environment:
+#      - TOKEN=${TOKEN} # 可选
+# services:
+#  tts-service:
+#    container_name: tts-service
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+#    ports:
+#      - "36699:80"
+
+#    environment:
+#      - WS_TIMEOUT=30000 # 或 60000 测试不同时长
+#    restart: unless-stopped
+
